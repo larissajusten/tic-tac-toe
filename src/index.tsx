@@ -1,16 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './i18n'
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./i18n";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { IntlProvider } from "react-intl";
+import { i18nConfig } from "./i18n";
+import translations from './i18n/locales/index'
+
+const language = navigator.language.split(/[-_]/)[0];
+
+const messages: any = {
+  'pt': translations.pt,
+  'en': translations.en,
+ };
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <App />
+    <IntlProvider
+      locale={language}
+      defaultLocale={i18nConfig.defaultNS}
+      messages={messages[language]}
+    >
+      <App />
+    </IntlProvider>
   </React.StrictMode>
 );
 

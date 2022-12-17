@@ -7,10 +7,13 @@ import "./modal.css";
 import I18n from "../components/I18n/I18n";
 
 const PartidaPage = (): React.ReactElement => {
+  const { t } = useTranslation();
   const [jogador1, setJogador1] = useState("");
   const [jogador2, setJogador2] = useState("");
   const [ganhador, setGanhador] = useState("");
-  const [proxJogador, setProxJogador] = useState("jogador");
+  const [proxJogador, setProxJogador] = useState(
+    `${t("players.player_default_label")}`
+  );
 
   const [quadrados, setQuadrados] = useState(Array(9).fill(0));
 
@@ -21,18 +24,16 @@ const PartidaPage = (): React.ReactElement => {
   const [count, setCount] = useState(0);
   const [fimDeJogo, setFimDeJogo] = useState(false);
 
-  const { t } = useTranslation();
-
   useInterval(() => {
     if (!(modalInicioStatus || modalFimStatus || fimDeJogo)) {
       setCount(count + 1);
     }
   }, 1000);
 
-  const stringGanhador = (winner: string): string => {
-    if (winner === "x") {
+  const stringGanhador = (ganhador: string): string => {
+    if (ganhador === "x") {
       return jogador1;
-    } else if (winner === "o") {
+    } else if (ganhador === "o") {
       return jogador2;
     } else return "";
   };
@@ -48,15 +49,14 @@ const PartidaPage = (): React.ReactElement => {
   const handleClickButton = () => {
     if (jogador1 && jogador2) {
       if (jogador1 === jogador2) {
-        alert(`${t("home.message")}`);
-        alert("Jogadores iguais! Mude o nome de um deles.");
+        alert(`${t("players.same_player")}`);
         return;
       } else {
         setProxJogador(jogador1);
         setModalInicioStatus(false);
       }
     } else {
-      alert(`Campo vazio!`);
+      alert(`${t("empty_field")}`);
       return;
     }
   };
@@ -65,7 +65,10 @@ const PartidaPage = (): React.ReactElement => {
     if (fimDeJogo) return;
 
     const squares = quadrados.slice();
-    squares[i] = proxJogador === jogador1 ? BlocoEnum.X : BlocoEnum.O;
+
+    if (squares[i] == 0) {
+      squares[i] = proxJogador === jogador1 ? BlocoEnum.X : BlocoEnum.O;
+    }
 
     setQuadrados(squares);
     if (proxJogador === jogador1) {
@@ -74,11 +77,12 @@ const PartidaPage = (): React.ReactElement => {
       setProxJogador(jogador1);
     }
 
-    let winner = calculateWinner(squares);
-    if (winner) {
+    let ganhador = calculateWinner(squares);
+
+    if (ganhador) {
       setFimDeJogo(true);
       setModalFimStatus(true);
-      setGanhador(stringGanhador(winner));
+      setGanhador(stringGanhador(ganhador));
     } else if (squares.every((elem) => typeof elem === "string")) {
       setFimDeJogo(true);
       setModalEmpateStatus(true);
@@ -92,7 +96,7 @@ const PartidaPage = (): React.ReactElement => {
   const board: React.ReactElement = (
     <div className="container">
       <div className="container-select">
-      <I18n />
+        <I18n />
       </div>
       <div className="container-blocos">
         {bloco(0)}
@@ -106,7 +110,9 @@ const PartidaPage = (): React.ReactElement => {
         {bloco(8)}
       </div>
       <div className="infos">
-        <div className="prox-jogador">Próximo: {proxJogador}</div>
+        <div className="prox-jogador">
+          {t("players.next_player")} {proxJogador}
+        </div>
         <div className="contador">{count}</div>
       </div>
     </div>
@@ -115,10 +121,10 @@ const PartidaPage = (): React.ReactElement => {
   const modalEmpate: React.ReactElement = (
     <div className="container-modal fim">
       <div className="modal-fim modal">
-        <h2 className="game-title"> Tic Tac Toe </h2>
-        <h3>Houve um empate! </h3>
+        <h2 className="game-title">{t("game_name")}</h2>
+        <h3>{t("tie_label")}</h3>
         <button className="button" onClick={handleClickJogarNovamente}>
-          Jogar Novamente
+          {t("play_again")}
         </button>
       </div>
     </div>
@@ -127,10 +133,12 @@ const PartidaPage = (): React.ReactElement => {
   const modalFim: React.ReactElement = (
     <div className="container-modal fim">
       <div className="modal-fim modal">
-        <h2 className="game-title"> Tic Tac Toe </h2>
-        <h3>Jogador Vencedor: {ganhador} </h3>
+        <h2 className="game-title">{t("game_name")}</h2>
+        <h3>
+          {t("players.winner")} {ganhador}{" "}
+        </h3>
         <button className="button" onClick={handleClickJogarNovamente}>
-          Jogar Novamente
+          {t("play_again")}
         </button>
       </div>
     </div>
@@ -139,11 +147,11 @@ const PartidaPage = (): React.ReactElement => {
   const modalInicio: React.ReactElement = (
     <div className="container-modal">
       <div className="modal">
-        <h2 className="game-title"> Tic Tac Toe</h2>
-        <Input mensagem="Jogador 1" onChange={setJogador1} />
-        <Input mensagem="Jogador 2" onChange={setJogador2} />
+        <h2 className="game-title">{t("game_name")}</h2>
+        <Input mensagem={t("players.first_player")} onChange={setJogador1} />
+        <Input mensagem={t("players.second_player")} onChange={setJogador2} />
         <button className="button" onClick={handleClickButton}>
-          Jogar
+          {t("start")}
         </button>
       </div>
     </div>

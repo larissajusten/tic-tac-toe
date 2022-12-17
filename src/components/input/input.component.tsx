@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { useTranslation } from "react-i18next";
 import "./input.css";
 
 interface IInputProps {
@@ -7,6 +8,7 @@ interface IInputProps {
 }
 
 const Input = ({ mensagem, onChange }: IInputProps): React.ReactElement => {
+  const { t } = useTranslation();
   const handleChange = (event: any) => onChange(event.target.value);
 
   return (
@@ -16,7 +18,7 @@ const Input = ({ mensagem, onChange }: IInputProps): React.ReactElement => {
         className="input"
         type="text"
         onChange={handleChange}
-        placeholder={"Digite o nome do " + mensagem}
+        placeholder={t("input_label") + mensagem}
       />
     </Fragment>
   );

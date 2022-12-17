@@ -8,7 +8,7 @@ import { initReactI18next } from 'react-i18next'
 import translations from './locales'
 
 // Configuração i18n
-const i18nConfig = {
+export const i18nConfig = {
   resources: translations,  // resources são as nossas traduções
   fallbackLng: 'pt-BR',     // fallbackLng é o idioma padrão caso o browser não consiga detectar sozinho
   defaultNS: 'translations' // defaultNS é o namespace padrão, podemos usar 'translations'
