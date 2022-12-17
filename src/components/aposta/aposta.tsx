@@ -17,8 +17,8 @@ const Aposta = ({
   };
 
   const numberFormater = new Intl.NumberFormat(i18n.language, {
+    currency: typeCurrency[i18n.language] || "BRL",
     style: "currency",
-    currency: typeCurrency[i18n.language],
   });
 
   return (
