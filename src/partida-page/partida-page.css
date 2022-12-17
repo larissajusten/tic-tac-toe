@@ -33,6 +33,7 @@
 .infos {
   position: absolute;
   right: 100px;
+  top: 30%;
   min-width: 200px;
   height: 150px;
   background-color: aliceblue;
@@ -46,7 +47,8 @@
 
 .infos-aposta {
   position: absolute;
-  left: 100px;
+  right: 100px;
+  top: 60%;
   min-width: 200px;
   height: 150px;
   background-color: aliceblue;
