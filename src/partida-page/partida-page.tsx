@@ -15,7 +15,6 @@ const PartidaPage = (): React.ReactElement => {
   const [jogador1, setJogador1] = useState("");
   const [jogador2, setJogador2] = useState("");
   const [apostaDaRodada, setApostaDaRodada] = useState<number>(0);
-  console.log(apostaDaRodada)
   const [ganhador, setGanhador] = useState("");
   const [proxJogador, setProxJogador] = useState(
     `${t("players.player_default_label")}`

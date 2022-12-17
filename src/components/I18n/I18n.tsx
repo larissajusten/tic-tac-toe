@@ -21,7 +21,6 @@ const I18n = (): React.ReactElement => {
   ];
 
   const onChange = (newValue: SingleValue<any>) => {
-    console.log(newValue);
     i18n.changeLanguage(newValue.value);
   };
 
