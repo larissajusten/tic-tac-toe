@@ -1,9 +1,8 @@
-import PartidaPage from './partida-page/partida-page';
+import React from 'react';
+import PartidaPage from "./partida-page/partida-page";
 
 function App() {
-  return (
-    <PartidaPage/>
-  );
+  return <PartidaPage />;
 }
 
 export default App;

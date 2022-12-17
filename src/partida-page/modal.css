@@ -1,0 +1,49 @@
+.container-modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  width: 600px;
+  height: 500px;
+  background-color: #42a5f5;
+  padding: 35px 35px;
+  box-shadow: 0 0 5px #e3f2fd;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-content: space-between;
+}
+
+.fim {
+  background: transparent;
+  width: unset;
+  left: 32px;
+}
+
+.modal-fim {
+  width: fit-content;
+  height: fit-content;
+}
+
+.button {
+  align-self: center;
+  background-color: white;
+  border-style: inherit;
+  color: #3181ce;
+  outline: 0;
+  bottom: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 16px 32px;
+}
+
+.button:active {
+  outline: double #3181ce;
+}
