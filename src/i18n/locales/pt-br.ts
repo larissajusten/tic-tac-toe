@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   translations: {
     // Mesmo valor usado nas configurações (defaultNS)
@@ -15,5 +16,8 @@ export default {
     start: "Iniciar jogo",
     play_again: "Jogar novamente",
     tie_label: "Houve um empate!",
+    bet: "Aposta:",
+    input_bet_label: "Valor da aposta da rodada:",
+    date: "Data:",
   },
 };

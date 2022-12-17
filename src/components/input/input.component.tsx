@@ -16,7 +16,7 @@ const Input = ({ mensagem, onChange }: IInputProps): React.ReactElement => {
       <label className="label-title">{mensagem}</label>
       <input
         className="input"
-        type="text"
+        type={"text"}
         onChange={handleChange}
         placeholder={t("input_label") + mensagem}
       />

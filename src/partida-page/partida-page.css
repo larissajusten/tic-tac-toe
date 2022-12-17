@@ -44,6 +44,20 @@
   align-items: center;
 }
 
+.infos-aposta {
+  position: absolute;
+  left: 100px;
+  min-width: 200px;
+  height: 150px;
+  background-color: aliceblue;
+  padding: 5px 5px;
+  box-shadow: 0 3px 5px #e3f2fd;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
 .prox-jogador {
   font-size: 20px;
   position: relative;
@@ -67,6 +81,36 @@
   width: 10px;
   height: 10px;
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.aposta-label {
+  font-size: 20px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 25px;
+  border-bottom: 1px solid #64b5f6;
+  padding-bottom: 5px;
+}
+
+.aposta-label::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  display: block;
+  border-right: 5px solid #64b5f6;
+  border-bottom: 5px solid #64b5f6;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.aposta-valor {
+  padding-top: 20px;
+  font-size: 42px;
 }
 
 .contador {

@@ -1,0 +1,32 @@
+.input{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    margin-bottom: 30px;
+    border: 0;
+    border-bottom: solid 1px rgb(240, 234, 234);
+    background-color: inherit;
+    outline: 0;
+    width: 100%;
+    color: white;
+    unicode-bidi: unset;
+}
+
+.input:hover{
+    border-bottom: solid 1px #3181ce;
+}
+
+.label-title, .game-title {
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(240, 234, 234);
+    font-weight: 500;
+}
+
+.label-title{
+    border-left: 3px double;
+    padding-left: 4px;
+}
+
+.input::placeholder{
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 100;
+}

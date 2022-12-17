@@ -6,12 +6,16 @@ import "./partida-page.css";
 import "./modal.css";
 import I18n from "../components/I18n/I18n";
 import Data from "../components/data/data";
+import InputNumber from "../components/input-number/input-number.component";
+import Aposta from "../components/aposta/aposta";
 
 const PartidaPage = (): React.ReactElement => {
   const { t } = useTranslation();
 
   const [jogador1, setJogador1] = useState("");
   const [jogador2, setJogador2] = useState("");
+  const [apostaDaRodada, setApostaDaRodada] = useState<number>(0);
+  console.log(apostaDaRodada)
   const [ganhador, setGanhador] = useState("");
   const [proxJogador, setProxJogador] = useState(
     `${t("players.player_default_label")}`
@@ -112,6 +116,9 @@ const PartidaPage = (): React.ReactElement => {
         {bloco(7)}
         {bloco(8)}
       </div>
+      <div className="infos-aposta">
+        <Aposta valorAposta={apostaDaRodada} />
+      </div>
       <div className="infos">
         <div className="prox-jogador">
           {t("players.next_player")} {proxJogador}
@@ -153,6 +160,10 @@ const PartidaPage = (): React.ReactElement => {
         <h2 className="game-title">{t("game_name")}</h2>
         <Input mensagem={t("players.first_player")} onChange={setJogador1} />
         <Input mensagem={t("players.second_player")} onChange={setJogador2} />
+        <InputNumber
+          mensagem={t("input_bet_label")}
+          onChange={(value) => setApostaDaRodada(value)}
+        />
         <button className="button" onClick={handleClickButton}>
           {t("start")}
         </button>
