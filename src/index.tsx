@@ -5,15 +5,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { IntlProvider } from "react-intl";
-import { i18nConfig } from "./i18n";
-import translations from './i18n/locales/index'
+import i18n, { i18nConfig } from "./i18n";
+import translations from "./i18n/locales/index";
 
 const language = navigator.language.split(/[-_]/)[0];
 
 const messages: any = {
-  'pt': translations.pt,
-  'en': translations.en,
- };
+  pt: translations.pt,
+  en: translations.en,
+};
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -22,7 +22,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <IntlProvider
-      locale={language}
+      locale={i18n.language}
       defaultLocale={i18nConfig.defaultNS}
       messages={messages[language]}
     >

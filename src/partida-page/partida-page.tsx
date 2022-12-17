@@ -5,9 +5,11 @@ import Bloco, { BlocoEnum } from "../components/bloco/bloco.component";
 import "./partida-page.css";
 import "./modal.css";
 import I18n from "../components/I18n/I18n";
+import Data from "../components/data/data";
 
 const PartidaPage = (): React.ReactElement => {
   const { t } = useTranslation();
+
   const [jogador1, setJogador1] = useState("");
   const [jogador2, setJogador2] = useState("");
   const [ganhador, setGanhador] = useState("");
@@ -97,6 +99,7 @@ const PartidaPage = (): React.ReactElement => {
     <div className="container">
       <div className="container-select">
         <I18n />
+        <Data />
       </div>
       <div className="container-blocos">
         {bloco(0)}

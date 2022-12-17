@@ -1,15 +1,14 @@
+import i18next from "i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
-import "./input.css";
 
 const Data = (): React.ReactElement => {
-  const { t } = useTranslation();
-
-  const currentDateTime = Date().toLocaleString();
+  const dateTimeFormat = new Intl.DateTimeFormat(i18next.languages[0], {dateStyle: 'long'});
+  const actualDate = new Date();
 
   return (
     <>
-      <label className="label-title">{currentDateTime}</label>
+      <label className="label-title">Data: </label>
+      <span>{dateTimeFormat.format(actualDate)}</span>
     </>
   );
 };
