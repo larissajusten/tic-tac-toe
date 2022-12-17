@@ -60,7 +60,7 @@ const PartidaPage = (): React.ReactElement => {
     if (fimDeJogo) return;
 
     const squares = quadrados.slice();
-    if(squares[i])
+    if(squares[i] == 0)
       squares[i] = proxJogador === jogador1 ? BlocoEnum.X : BlocoEnum.O;
 
     setQuadrados(squares);
